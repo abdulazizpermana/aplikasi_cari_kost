@@ -247,7 +247,7 @@ class DetailPage extends StatelessWidget {
                             ),
                             InkWell(
                               onTap: () {
-                                // launch('https://goo.gl/maps/SyZx2yjWB1yR6AeH8');
+                                // launch('https://goo.gl/maps/ZUq2NXd1Kk1dNbFj6');
                                 launchUrl('sdfgshthyt');
                               },
                               child: Image.asset(
