@@ -1,16 +1,21 @@
 import 'package:aplikasi_cari_kost/model/city.dart';
 import 'package:aplikasi_cari_kost/model/space.dart';
 import 'package:aplikasi_cari_kost/model/tips.dart';
+import 'package:aplikasi_cari_kost/provider/space_provider.dart';
 import 'package:aplikasi_cari_kost/widget/bottom_navbar_item.dart';
 import 'package:aplikasi_cari_kost/widget/city_card.dart';
 import 'package:aplikasi_cari_kost/widget/space_card.dart';
 import 'package:aplikasi_cari_kost/widget/tips_card.dart';
 import 'package:flutter/material.dart';
 import 'package:aplikasi_cari_kost/theme.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var spaceProvider = Provider.of<SpaceProvider>(context);
+    spaceProvider.getRecommendedSpaces();
+
     return Scaffold(
       backgroundColor: whiteColor,
       body: SafeArea(
@@ -124,51 +129,29 @@ class HomePage extends StatelessWidget {
               padding: EdgeInsets.symmetric(
                 horizontal: edge,
               ),
-              child: Column(
-                children: [
-                  SpaceCard(
-                    Space(
-                      id: 1,
-                      name: 'Kuretakaso Hot',
-                      imageUrl: 'assets/images/image1.png',
-                      price: 52,
-                      city: 'Bandung',
-                      country: 'Indonesia',
-                      rating: 4,
-                    ),
-                  ),
-                  SizedBox(
-                    height: 30,
-                  ),
-                  SpaceCard(
-                    Space(
-                      id: 2,
-                      name: 'Roemah Nenek',
-                      imageUrl: 'assets/images/image2.png',
-                      price: 11,
-                      city: 'Bogor',
-                      country: 'Indonesia',
-                      rating: 5,
-                    ),
-                  ),
-                  SizedBox(
-                    height: 30,
-                  ),
-                  SpaceCard(
-                    Space(
-                      id: 3,
-                      name: 'Rumah Tua',
-                      imageUrl: 'assets/images/image3.png',
-                      price: 20,
-                      city: 'Jakarta',
-                      country: 'Indonesia',
-                      rating: 4,
-                    ),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                ],
+              child: FutureBuilder(
+                future: spaceProvider.getRecommendedSpaces(),
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    List<Space> data = snapshot.data;
+                    int index = 0;
+
+                    return Column(
+                      children: data.map((item) {
+                        index++;
+                        return Container(
+                          margin: EdgeInsetsDirectional.only(
+                            top: index == 1 ? 0 : 30,
+                          ),
+                          child: SpaceCard(item),
+                        );
+                      }).toList(),
+                    );
+                  }
+                  return Center(
+                    child: CircularProgressIndicator(),
+                  );
+                },
               ),
             ),
             //TIPS and GUIDANCE

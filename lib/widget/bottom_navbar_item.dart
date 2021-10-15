@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class BottomNavbarItem extends StatelessWidget {
   final String imageUrl;
   final bool isActive;
-  BottomNavbarItem({required this.imageUrl, required this.isActive});
+  BottomNavbarItem({this.imageUrl, this.isActive});
 
   @override
   Widget build(BuildContext context) {

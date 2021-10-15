@@ -5,8 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class DetailPage extends StatelessWidget {
-  const DetailPage({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     launchUrl(String Url) async {
@@ -16,7 +14,7 @@ class DetailPage extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => const ErrorPage(),
+            builder: (context) => ErrorPage(),
           ),
         );
       }
