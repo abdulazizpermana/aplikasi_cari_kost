@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "74189562368",
+    "project_id": "aplikasi-cari-kos",
+    "storage_bucket": "aplikasi-cari-kos.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:74189562368:android:ed064cc84c0790e4372ee5",
+        "android_client_info": {
+          "package_name": "com.example.aplikasi_cari_kost"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "74189562368-qcpfai1nnhu4etilq4fksr9n29du3bru.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAG8BIqv7m8NF50LHA4hOyxdcjYwaZF208"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "74189562368-qcpfai1nnhu4etilq4fksr9n29du3bru.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -2,7 +2,7 @@
     package="com.example.aplikasi_cari_kost">
    <application
         android:label="aplikasi_cari_kost"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/launcher_icon">
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
