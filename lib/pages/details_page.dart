@@ -31,6 +31,40 @@ class _DetailPageState extends State<DetailPage> {
       }
     }
 
+    Future<void> showConfirmation() async {
+      return showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text('Konfirmasi'),
+              content: SingleChildScrollView(
+                child: ListBody(
+                  children: <Widget>[
+                    Text('Apakah kamu ingin menghubungi pemilik Kos?')
+                  ],
+                ),
+              ),
+              actions: <Widget>[
+                TextButton(
+                  child: Text(
+                    'Nanti',
+                  ),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+                TextButton(
+                  child: Text('Hubungi'),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                    launch('tel://${widget.space.phone}');
+                  },
+                ),
+              ],
+            );
+          });
+    }
+
     return Scaffold(
       backgroundColor: whiteColor,
       body: SafeArea(
@@ -45,13 +79,13 @@ class _DetailPageState extends State<DetailPage> {
             ),
             ListView(
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 328,
                 ),
                 Container(
                   width: MediaQuery.of(context).size.width,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.vertical(
+                    borderRadius: const BorderRadius.vertical(
                       top: Radius.circular(20),
                     ),
                     color: whiteColor,
@@ -59,7 +93,7 @@ class _DetailPageState extends State<DetailPage> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         height: 30,
                       ),
                       //NOTE TITLE
@@ -79,7 +113,7 @@ class _DetailPageState extends State<DetailPage> {
                                     fontSize: 22,
                                   ),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 2,
                                 ),
                                 Text.rich(
@@ -116,7 +150,7 @@ class _DetailPageState extends State<DetailPage> {
                           ],
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 30,
                       ),
                       // NOTE MAIN FACILITIES
@@ -127,7 +161,7 @@ class _DetailPageState extends State<DetailPage> {
                           style: regulerStyle.copyWith(fontSize: 16),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 12,
                       ),
                       Padding(
@@ -155,7 +189,7 @@ class _DetailPageState extends State<DetailPage> {
                           ],
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 30,
                       ),
                       // NOTE: PHOTO
@@ -166,7 +200,7 @@ class _DetailPageState extends State<DetailPage> {
                           style: regulerStyle.copyWith(fontSize: 16),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 12,
                       ),
                       Container(
@@ -176,7 +210,7 @@ class _DetailPageState extends State<DetailPage> {
                           children: widget.space.photos.map(
                             (item) {
                               return Container(
-                                margin: EdgeInsets.only(
+                                margin: const EdgeInsets.only(
                                   left: 24,
                                 ),
                                 child: ClipRRect(
@@ -194,7 +228,7 @@ class _DetailPageState extends State<DetailPage> {
                           //
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 30,
                       ),
                       // NOTE: LOCATION
@@ -205,7 +239,7 @@ class _DetailPageState extends State<DetailPage> {
                           style: regulerStyle.copyWith(fontSize: 16),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 6,
                       ),
                       Padding(
@@ -230,7 +264,7 @@ class _DetailPageState extends State<DetailPage> {
                           ],
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 40,
                       ),
                       Container(
@@ -241,7 +275,7 @@ class _DetailPageState extends State<DetailPage> {
                         width: MediaQuery.of(context).size.width - (2 - edge),
                         child: RaisedButton(
                           onPressed: () {
-                            launch('tel://${widget.space.phone}');
+                            showConfirmation();
                           },
                           color: purpleColor,
                           shape: RoundedRectangleBorder(
@@ -255,7 +289,7 @@ class _DetailPageState extends State<DetailPage> {
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 40,
                       ),
                     ],
